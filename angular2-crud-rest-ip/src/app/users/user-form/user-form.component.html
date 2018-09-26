@@ -1,0 +1,28 @@
+<h5>{{ title }}</h5>
+<div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="name" type="text" class="validate"
+               [(ngModel)]="user.ip" formControlName="name"
+               maxlength="12" 
+               [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid">
+        <label for="name"
+               [class.active]="user.ip"
+               data-error="La Ip ingresada es erronea">
+         IP (Solo numeros. N < 12)
+        </label>
+      </div>
+    </div>
+
+
+    <button class="btn waves-effect waves-light" type="submit"
+            [disabled]="!form.valid">
+      Enviar<i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
+
+
+ 
