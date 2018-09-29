@@ -7,32 +7,36 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
-export class UsersService {
+export class numerosService {
 
-  //private url: string = "http://jsonplaceholder.typicode.com/users";
+  //private url: string = "http://jsonplaceholder.typicode.com/numeros";
   constructor(private http: Http) { }
 
-  getUsers(){
+  getnumeros(){
     return this.http.get('http://localhost:8080/api/listaNumeros')
       .map(res => res.json());
   }
 
-  getUser(id){
+  getnumero(id){
     return this.http.get('http://localhost:8080/api/buscaNumero/'+id)
       .map(res => res.json());
   }
 
-  addUser(user){
-    return this.http.post('http://localhost:8080/api/guardaNumero1', JSON.stringify(user))
+  addnumero(numero){
+    console.log('lo que se manda');
+    console.log(numero);
+    return this.http.post('http://localhost:8080/api/guardaNumero1', JSON.stringify(numero))
       .map(res => res.json());
   }
 
-  updateUser(user){
-    return this.http.put('http://localhost:8080/api/actualizaNumero/'+user.id, JSON.stringify(user))
+  updatenumero(numero){
+     console.log('lo que se manda');
+    console.log(numero);
+    return this.http.put('http://localhost:8080/api/actualizaNumero/'+numero.id, JSON.stringify(numero))
       .map(res => res.json());
   }
 
-  deleteUser(id){
+  deletenumero(id){
     return this.http.delete('http://localhost:8080/api/borrarNumero/'+id)
       .map(res => res.json());
   }

@@ -1,5 +1,5 @@
 <p>
-  Mostrando {{ users.length }} Direcciones ip.
+  Mostrando {{ numeros.length }} Direcciones ip.
 </p>
 
 <table>
@@ -13,16 +13,16 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.ip }}</td>
+    <tr *ngFor="let numero of numeros">
+      <td>{{ numero.id }}</td>
+      <td>{{ numero.ip }}</td>
       <td>
-        <a [routerLink]="['/users', user.id]">
+        <a [routerLink]="['/numeros', numero.id]">
           <i class="material-icons">mode_edit</i>
         </a>
       </td>
       <td>
-        <a (click)="deleteUser(user)" href="">
+        <a (click)="deletenumero(numero)" href="">
           <i class="material-icons">delete</i>
         </a>
       </td>
@@ -32,7 +32,7 @@
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
   <a class="btn-floating btn-large waves-effect waves-light green"
-     routerLink="/users/new">
+     routerLink="/numeros/new">
     <i class="material-icons">add</i>
   </a>
 </div>

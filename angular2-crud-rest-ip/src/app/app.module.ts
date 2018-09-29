@@ -10,8 +10,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { routing } from './app.routing';
-import { usersRouting } from "./users/users.routing";
-import { UsersModule } from "./users/users.module";
+import { numerosRouting } from "./numeros/numeros.routing";
+import { numerosModule } from "./numeros/numeros.module";
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { UsersModule } from "./users/users.module";
     FormsModule,
     HttpModule,
     MaterializeModule,
-    UsersModule,
-    usersRouting,
+    numerosModule,
+    numerosRouting,
     routing
   ],
   providers: [],

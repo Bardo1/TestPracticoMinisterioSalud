@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule }  from '@angular/router';
 import { HttpModule }  from '@angular/http';
-
-import { UsersComponent } from './users.component';
-import { UsersService } from './shared/users.service';
-import { UserFormComponent } from './user-form/user-form.component';
+import { numerosComponent } from './numeros.component';
+import { numerosService } from './shared/numeros.service';
+import { numeroFormComponent } from './numero-form/numero-form.component';
 
 @NgModule({
   imports: [
@@ -17,14 +16,14 @@ import { UserFormComponent } from './user-form/user-form.component';
     HttpModule
   ],
   declarations: [
-    UsersComponent,
-    UserFormComponent
+    numerosComponent,
+    numeroFormComponent
   ],
   exports: [
-    UsersComponent
+    numerosComponent
   ],
   providers: [
-    UsersService
+    numerosService
   ]
 })
-export class UsersModule { }
+export class numerosModule { }

@@ -1,0 +1,36 @@
+<h5>{{ title }}</h5>
+<br>
+<br>
+<div class="row">
+  <form  class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">  
+  <div>
+      <div class="row">
+        <div class="input-field col s4">
+            <i class="material-icons prefix">input</i>
+          <input placeholder='0.0.0.0' id="ip" type="text" class="validate"
+                 required 
+                 maxlength="15" 
+                 [(ngModel)]="numero.ip" formControlName="ip"
+                 [class.invalid]="form.controls['ip'].touched
+                  && !form.controls['ip'].valid">
+          <label for="ip"
+                 [class.active]="numero.ip"
+                 data-error="Ip Erronea">
+             IP (cadena numeros con formato IPV4 validas)
+          </label>
+        </div>
+      </div>
+  </div>
+    <button class="btn waves-effect waves-light" type="submit"
+            [disabled]="!form.valid">
+      Enviar <i class="material-icons right">send</i>
+    </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+ 

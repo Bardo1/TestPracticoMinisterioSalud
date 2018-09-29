@@ -1,6 +1,6 @@
 import {Address} from './address';
 
-export class User {
+export class numero {
   id: number;
   name: string;
   phone: string;
