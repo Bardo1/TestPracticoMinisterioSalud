@@ -4,14 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class IpGenerada {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private Integer ip;
-    private Integer idNumero;
+    private String ip;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Numero numero;
+    
 
     public Integer getId() {
         return id;
@@ -21,20 +27,20 @@ public class IpGenerada {
         this.id = id;
     }
 
-    public Integer getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(Integer ip) {
+    public void setIp(String ip) {
         this.ip = ip;
     }
     
-    public Integer getIdNumero() {
-        return idNumero;
+    public Numero getIdNumero() {
+        return numero;
     }
 
-    public void setIdNumero(Integer idNumero) {
-        this.idNumero = idNumero;
+    public void setIdNumero(Numero numero) {
+        this.numero = numero;
     }
     
     

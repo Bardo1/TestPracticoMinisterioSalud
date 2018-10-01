@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-mysql-data</artifactId>
+    <artifactId>Api-Rest-Postgres</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -39,13 +39,13 @@
             <scope>test</scope>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-<dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>9.4.1209</version>
-</dependency>
-        
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4.1209</version>
+		</dependency>
+		
     </dependencies>
 
     <properties>
@@ -60,5 +60,5 @@
             </plugin>
         </plugins>
     </build>
-
+    <name>Api-Rest-Postgres</name>
 </project>

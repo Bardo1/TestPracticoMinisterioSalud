@@ -12,13 +12,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { routing } from './app.routing';
 import { numerosRouting } from "./numeros/numeros.routing";
 import { numerosModule } from "./numeros/numeros.module";
+import { DespliegueComponent } from './despliegue/despliegue.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DespliegueComponent
   ],
   imports: [
     BrowserModule,

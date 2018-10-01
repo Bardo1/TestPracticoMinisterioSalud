@@ -24,8 +24,12 @@ export class numeroFormComponent implements OnInit {
     private numerosService: numerosService
   ) {
     this.form = formBuilder.group({
-        ip: ['', Validators.pattern('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')]
+        ip: ['',  Validators.required ]
     });
+
+          //  ip: ['', Validators.pattern('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')]
+
+
   }
 
   ngOnInit() {
@@ -47,6 +51,8 @@ export class numeroFormComponent implements OnInit {
           });
     });
   }
+
+
 
   save() {
     var result,

@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
 import { addProviders, async, inject } from '@angular/core/testing';
-import {Address} from './address';
+import {IpGenerada} from './IpGenerada';
 
-describe('Address', () => {
+describe('IpGenerada', () => {
   it('should create an instance', () => {
-    expect(new Address()).toBeTruthy();
+    expect(new IpGenerada()).toBeTruthy();
   });
 });

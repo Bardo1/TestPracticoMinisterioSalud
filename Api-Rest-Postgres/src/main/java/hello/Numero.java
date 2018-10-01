@@ -10,7 +10,7 @@ public class Numero {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private Integer ip;
+    private String ip;
 
     public Integer getId() {
         return id;
@@ -20,11 +20,11 @@ public class Numero {
         this.id = id;
     }
 
-    public Integer getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(Integer ip) {
+    public void setIp(String ip) {
         this.ip = ip;
     }
     

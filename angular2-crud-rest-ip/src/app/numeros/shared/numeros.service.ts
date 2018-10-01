@@ -22,10 +22,13 @@ export class numerosService {
       .map(res => res.json());
   }
 
+  desplegarIps(id){
+    return this.http.get('http://localhost:8080/api/buscaIps/'+id)
+     .map(res => res.json());
+  }
+
   addnumero(numero){
-    console.log('lo que se manda');
-    console.log(numero);
-    return this.http.post('http://localhost:8080/api/guardaNumero1', JSON.stringify(numero))
+    return this.http.post('http://localhost:8080/api/generaIps', JSON.stringify(numero))
       .map(res => res.json());
   }
 
@@ -37,6 +40,7 @@ export class numerosService {
   }
 
   deletenumero(id){
+    console.log("Esta la id"+id);
     return this.http.delete('http://localhost:8080/api/borrarNumero/'+id)
       .map(res => res.json());
   }
