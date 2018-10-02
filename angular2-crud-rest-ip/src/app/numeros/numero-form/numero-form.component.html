@@ -9,17 +9,17 @@
       <div class="row">
         <div class="input-field col s4">
             <i class="material-icons prefix">input</i>
-          <input placeholder='0000' id="ip" type="text" class="validate"
+          <input placeholder='0000' id="ip" type="number" class="validate"
                  required 
                  maxlength="12" 
                  minlength="4" 
-                 [(ngModel)]="numero.ip" formControlName="ip"
+                 [(ngModel)]="ipcosa" formControlName="ip"
                  [class.invalid]="form.controls['ip'].touched
                   && !form.controls['ip'].valid">
           <label for="ip"
                  [class.active]="numero.ip"
                  data-error="Ip Erronea">
-             IP (cadena numeros con formato IPV4 validas)
+             IP (Ingrese cadena numeros, valido solo hasta 12 numeros)
           </label>
         </div>
       </div>
@@ -30,6 +30,29 @@
     </button>
       </div>
     </div>
+  </form>
+
+  <form  class="col s12"  *ngIf="lista" (ngSubmit)="guardarIps()">
+       <div>          
+            <table>
+              <thead>
+              <tr>
+                <th data-field="name">Ip generada</th>
+              </tr>
+              </thead>
+              
+              <tbody>
+                <tr *ngFor="let li of lista">
+                  <td>{{ li }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+      </div>
+          <button class="btn waves-effect waves-light" type="submit"
+            [disabled]="!form.valid">
+      Guardar Ips <i class="material-icons right">send</i>
+    </button>
   </form>
 </div>
 

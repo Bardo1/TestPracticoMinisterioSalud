@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { numero } from '../shared/numero';
 import { numerosService } from '../shared/numeros.service';
 import { BasicValidators } from '../../shared/basic-validators';
@@ -15,7 +14,12 @@ export class numeroFormComponent implements OnInit {
 
   form: FormGroup;
   title: string;
+  ipcosa: string;
+  resp: boolean;
+  lista: string [];
+  unid: string;
   numero: numero = new numero();
+
 
   constructor(
     formBuilder: FormBuilder,
@@ -28,22 +32,22 @@ export class numeroFormComponent implements OnInit {
     });
 
           //  ip: ['', Validators.pattern('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')]
-
-
   }
 
   ngOnInit() {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
-    // this.laip='';
       this.title = id ? 'Editar IP' : 'Ingrese nueva IP';
 
       if (!id)
         return;
-
       this.numerosService.getnumero(id)
         .subscribe(
-          numero => this.numero = numero,
+            data => 
+        { 
+         this.ipcosa = data.ip;
+         this.unid =data.id;
+        },
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);
@@ -52,21 +56,52 @@ export class numeroFormComponent implements OnInit {
     });
   }
 
-
+  
 
   save() {
     var result,
         numeroValue = this.form.value;
 
-        console.log('numeroValue');
-    console.log(numeroValue);
-
-    if (numeroValue.id){
-      result = this.numerosService.updatenumero(numeroValue);
+    if (this.title==='Editar IP'){
+       console.log("entra por acá")
+      this.numerosService.updatenumero(this.ipcosa,this.unid)
+        .subscribe(
+          resp => this.resp = resp,
+          response => {
+            if (response.status == 404) {
+              this.router.navigate(['NotFound']);
+            }
+          });
+       this.router.navigate(['numeros']);
     } else {
-      result = this.numerosService.addnumero(numeroValue);
+    result =  this.numerosService.addnumero(this.ipcosa)
+        .subscribe(
+          lista => this.lista = lista,
+          response => {
+            if (response.status == 404) {
+              this.router.navigate(['NotFound']);
+            }
+          });
+
     }
 
-    result.subscribe(data => this.router.navigate(['numeros']));
+    }
+
+
+guardarIps() {
+      this.numerosService.guardaIpsGeneradas(this.ipcosa)
+        .subscribe(
+          resp => this.resp = resp,
+          response => {
+            if (response.status == 404) {
+              this.router.navigate(['NotFound']);
+            }
+          });
+       this.router.navigate(['numeros']);
+
   }
+
 }
+
+
+

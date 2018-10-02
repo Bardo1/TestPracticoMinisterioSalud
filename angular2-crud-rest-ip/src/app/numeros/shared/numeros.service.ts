@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { numero } from '../shared/numero';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -26,16 +27,22 @@ export class numerosService {
     return this.http.get('http://localhost:8080/api/buscaIps/'+id)
      .map(res => res.json());
   }
+  
+  guardaIpsGeneradas(id){
+    return this.http.get('http://localhost:8080/api/guardaIpsGeneradas/'+id)
+    .map(res => res.json());
+  }
 
-  addnumero(numero){
-    return this.http.post('http://localhost:8080/api/generaIps', JSON.stringify(numero))
+  addnumero(id){
+     console.log("Esta la id"+id);
+    return this.http.get('http://localhost:8080/api/generaIps/'+id)
       .map(res => res.json());
   }
 
-  updatenumero(numero){
-     console.log('lo que se manda');
-    console.log(numero);
-    return this.http.put('http://localhost:8080/api/actualizaNumero/'+numero.id, JSON.stringify(numero))
+  updatenumero(ip,id){
+     console.log("Esta la id"+id);
+      console.log("Esta la ip"+ip);
+    return this.http.get('http://localhost:8080/api/actualizaNumero/'+id+'/'+ip)
       .map(res => res.json());
   }
 

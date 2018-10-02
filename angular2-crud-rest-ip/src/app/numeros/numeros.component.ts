@@ -30,10 +30,7 @@ export class numerosComponent implements OnInit {
   deletenumero(numero){
     if (confirm("Are you sure you want to delete " + numero.name + "?")) {
       var index = this.numeros.indexOf(numero);
-      console.log("el index :"+index);
-      console.log("el numero id :"+numero.id);
     //  this.numeros.splice(index, 1);
-
       this.numerosService.deletenumero(numero.id)
         .subscribe(data => this.IpGeneradas = data);
     }

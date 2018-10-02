@@ -1,5 +1,8 @@
 package hello;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +23,7 @@ public class IpGeneradaController {
 	
 	@Autowired 
 	private IpGeneradaRepository IpGeneradaRepository;
+          
 	
 	@GetMapping(path="/guardaIpGenerada") //Creamos por get
 	public @ResponseBody String creaIpGeneradaGet(@RequestParam String ip) {		
@@ -27,20 +32,20 @@ public class IpGeneradaController {
 		IpGeneradaRepository.save(n);
 		return "Guardado por get";
 	}
+      
         
-   
         @GetMapping("/buscaIps/{id}")//Traemos todos por get
 	public @ResponseBody Iterable<IpGenerada> buscabuscaIpsGet(@PathVariable Integer id) {		            
           Iterable<IpGenerada> lista =  IpGeneradaRepository.findAllByIdnum(id);
           return lista;
 	}
-        
-	
-	@PostMapping("/guardaIpGenerada1") //Creamos por post
+  
+	/*
+	@PostMapping("/guardaIpG") //Creamos por post
 	public IpGenerada creaIpGeneradaPost(@RequestBody IpGenerada IpGenerada) {
 	    IpGeneradaRepository.save(IpGenerada);
 		return IpGenerada;
-	}
+	} */
 	
 	@GetMapping(path="/listaIpGeneradas") //Traemos todos por get
 	public @ResponseBody Iterable<IpGenerada> getListaIpGeneradas() {//Retorna todas las ips generadas
@@ -59,7 +64,6 @@ public class IpGeneradaController {
 	@DeleteMapping("/borrarIpGenerada/{id}")//borramos uno por id
 	public void  borrarIpGenerada(@PathVariable Integer id){		
 		IpGeneradaRepository.deleteById(id);
-		//return "Eliminado con exito";
 	}
 		
 	@PutMapping("/actualizaIpGenerada/{id}")
